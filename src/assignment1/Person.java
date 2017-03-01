@@ -39,7 +39,6 @@ public class Person {
      */
     public void setPostalCode(String postalCode)
     {
-        postalCode.toUpperCase();
         
         if (postalCode.length() != 6)
             throw new IllegalArgumentException ("The postal code must have 6 characters");
@@ -62,7 +61,7 @@ public class Person {
         else if (!Character.isDigit(postalCode.charAt(5)))
             throw new IllegalArgumentException("The sixth character of postal code must be a number");
         
-        this.postalCode = postalCode;            
+        this.postalCode = postalCode.toUpperCase();            
     }
     
     /**
@@ -137,6 +136,85 @@ public class Person {
         this.streetAddress = streetAddress;
         this.city = city;
         this.province = province;
-        this.postalCode = postalCode;
+        
+        
+        if (postalCode.length() != 6)
+            throw new IllegalArgumentException ("The postal code must have 6 characters");
+        
+        else if (!Character.isLetter(postalCode.charAt(0)))
+            throw new IllegalArgumentException("The first character of postal code must be a letter");
+        
+        else if (!Character.isDigit(postalCode.charAt(1)))
+            throw new IllegalArgumentException("The second character of postal code must be a number");
+        
+        else if (!Character.isLetter(postalCode.charAt(2)))
+            throw new IllegalArgumentException("The third character of postal code must be a letter");
+        
+        else if (!Character.isDigit(postalCode.charAt(3)))
+            throw new IllegalArgumentException("The fourth character of postal code must be a number");
+        
+        else if (!Character.isLetter(postalCode.charAt(4)))
+            throw new IllegalArgumentException("The fifth character of postal code must be a letter");
+        
+        else if (!Character.isDigit(postalCode.charAt(5)))
+            throw new IllegalArgumentException("The sixth character of postal code must be a number");
+        
+        this.postalCode = postalCode.toUpperCase();
     }
+    
+    /**
+     * This method sets the birthday of the person method
+     * @param dob 
+     */
+    public void setBirthdate(LocalDate dob) {
+        birthdate = dob;
+    }
+    
+    /**
+     * This method sets the province of the person method
+     * @param province 
+     */
+    public void setProvince(String province) {
+        this.province = province;
+    }
+    
+    /**
+     * This method sets the city of the person object
+     * @param city 
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+    
+    /**
+     * This method sets the address of the person object
+     * @param address 
+     */
+    public void setStreetAddress(String address) {
+        this.streetAddress = address;
+    }
+    
+    /**
+     * This method sets the first name of the person object
+     * @param fname 
+     */
+    public void setFirstName(String fname) {
+        firstName = fname;
+    }
+    /**
+     * This method sets the last name of person object
+     * @param lname 
+     */
+    public void setLastName(String lname) {
+        lastName = lname;
+    }
+    
+    /**
+     * This method returns the name of the person
+     */
+    public String toString() {
+        return firstName + " " + lastName;
+    }
+    
+    
 }
